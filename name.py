@@ -219,6 +219,10 @@ def main():
     """ Karel code goes here! """
     kt = ktools()
 
+    kt.printm()
+    kt.a()
+    kt.x()
+
     pass
 
 
