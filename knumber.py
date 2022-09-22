@@ -224,6 +224,14 @@ class ktools:
         self.m()
         self.m()
 
+    def one(self):
+        kt.tl()
+        kt.mm(5)
+        kt.ta()
+        kt.put5()
+        kt.tl()
+        kt.mm(2)
+
     def fic(self) -> bool:
         """Front is Clean"""
         return front_is_clear()
@@ -258,10 +266,39 @@ class ktools:
                     self.m()
         pass
 
+    def mm(self, num):
+        """Move Multiple"""
+        for number in range(0, num):
+            self.m()
+
+    def putm(self, num):
+        """Put Multiple"""
+        for i in range(num - 1):
+            self.put()
+            self.m()
+        self.put()
+
+    def pickm(self, num):
+        """Pick Multiple"""
+        for _ in range(num - 1):
+            self.pick()
+            self.m()
+        self.pick()
+
 
 def main():
     """ Karel code goes here! """
     kt = ktools()
+
+    kt.tl()
+    kt.mm(5)
+    kt.ta()
+    kt.put5()
+    kt.tl()
+    kt.mm(2)
+
+    for num in range(9):
+        kt.o()
 
     pass
 
