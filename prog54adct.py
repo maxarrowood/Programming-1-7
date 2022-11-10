@@ -21,6 +21,6 @@ miles = carselected["miles"]
 gallons = carselected["gallons"]
 mpg = float(miles) / gallons
 
-print("Miles;", miles)
+print("Miles:", miles)
 print("Gallons:", gallons)
 print("MPG:", round(mpg, 10))
