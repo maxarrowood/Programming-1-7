@@ -1,18 +1,22 @@
 def main():
-    eggs = int(input("Dozens of Eggs purchased: "))
+    eggs = int(input("Eggs purchased: "))
+    dozens = eggs // 12
+    remain = eggs % 12
     price = 0.0
     cost = 0.0
 
-    if eggs > 0 and eggs < 4:
+    if dozens > 0 and dozens < 4:
         price = 0.50
-    elif eggs >= 4 and eggs < 6:
+    elif dozens >= 4 and dozens < 6:
         price = 0.45
-    elif eggs >= 6 and eggs < 11:
+    elif dozens >= 6 and dozens < 11:
         price = 0.40
-    elif eggs >= 11:
+    elif dozens >= 11:
         price = 0.30
 
-    cost = price * eggs
+    expr = price * 0.083
+    re = remain * expr
+    cost = price * dozens + re
     print("Total cost is $" + str(round(cost, 2)))
 
 
