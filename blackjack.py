@@ -1,12 +1,9 @@
-import pygame
-import random
+from tkinter import *
 
-hearts = chr(9829)
-diamonds = chr(9830)
-spades = chr(9824)
-clubs = chr(9827)
+# setup
+top = Tk()
+top.geometry("600x450")
+name = Label(top, text="Blackjack").place(x=300, y=100)
+starbutton = Button(top, text="Start", fg="red")
 
-money = 0
-
-def main():
-  
+top.mainloop()
