@@ -13,8 +13,15 @@ screen = pygame.display.set_mode((width, height))
 logo = pygame.image.load("cards.png").convert()
 pygame.display.set_caption("Max's Blackjack")
 
+#starting page
+font = pygame.font.Font('freesansbold.ttf', 34)
+text_surface = font.render('Press SPACE to start', False, (0, 0, 0))
+
 while True:
     screen.fill(backgroundColor)
-    pygame.draw.rect(screen, red, pygame.Rect(325, 400, 150, 60))
-
+    pygame.draw.rect(screen, red, pygame.Rect(200, 400, 400, 60))
+    screen.blit(text_surface, (225, 415))
     pygame.display.flip()
+    for event in pygame.event.get():
+        if event.type == pygame.K_SPACE:
+            text_surface.Visible = False
