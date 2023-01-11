@@ -22,20 +22,21 @@ screen.fill(backgroundColor)
 
 def main():
 
-    while True:
-        pygame.init()
+    pygame.init()
 
-        screen.blit(logo, (0, 0))
-        pygame.display.flip()
+    screen.blit(logo, (0, 0))
+    pygame.display.flip()
+
+    while True:
 
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 os.system('clear')
                 screen.fill(red)
-                pygame.display.update()
+                pygame.display.flip()
 
         for event in pygame.event.get():
-            if pygame.K_ESCAPE:
+            if event.type == pygame.K_ESCAPE:
                 pygame.quit()
 
 
