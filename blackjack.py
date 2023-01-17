@@ -13,10 +13,11 @@ backgroundColor = 72, 112, 70
 screen = pygame.display.set_mode((width, height))
 logo = pygame.image.load("maxlogo.png").convert()
 pygame.display.set_caption("Max's Blackjack")
+cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 
 #starting page
 font = pygame.font.Font('freesansbold.ttf', 34)
-text_surface = font.render('Press SPACE to start', False, (0, 0, 0))
+text_surface = font.render('Press ENTER to Deal', False, (0, 0, 0))
 screen.fill(backgroundColor)
 
 
@@ -34,11 +35,15 @@ def main():
                 os.system('clear')
                 screen.fill(red)
                 pygame.display.flip()
+              
 
         for event in pygame.event.get():
             if event.type == pygame.K_ESCAPE:
                 pygame.quit()
 
+
+  def cardgen():
+  
 
 if __name__ == '__main__':
     main()
