@@ -3,6 +3,8 @@ import os
 import random
 import math
 
+pygame.init()
+
 #design
 black = 0, 0, 0
 white = 255, 255, 255
@@ -11,7 +13,16 @@ green = 85, 164, 77
 red = 173, 39, 36
 
 font = pygame.font.Font('freesansbold.ttf', 32)
-text = font.render('GeeksForGeeks', True, green, blue)
+p_point = font.render('', True, white, black)
+d_point = font.render('', True, white, black)
+
+#score board
+display_surface = pygame.display.set_mode((400, 500))
+textRect = p_point.get_rect()
+textRect.center = (400 // 2, 500 // 2)
+display_surface1 = pygame.display.set_mode((400, 100))
+textRect1 = d_point.get_rect()
+textRect1.center = (400 // 2, 100 // 2)
 
 logo = pygame.image.load("maxlogo.png").convert()
 pygame.display.set_caption("Max's Blackjack")
@@ -58,6 +69,9 @@ def play():
   if p_sum > 21:
     p_sum = p_sum -1
 
+  p_point = font.render("Your Hand" + str(p_sum), True, white, black)
+  d_point = font.render("Dealer's Hand" + str(d_sum), True, white, black)
+  
   
 #game
 def main():
@@ -72,6 +86,8 @@ def main():
       if event.type == pygame.MOUSEBUTTONDOWN:
         os.system('clear')
         screen.fill(red)
+        display_surface.blit(p_point, textRect)
+        display_surface.blit(d_point, textRect1)
         pygame.display.flip()
 
     for event in pygame.event.get():
@@ -81,6 +97,7 @@ def main():
     for event in pygame.event.get():
       if event.type == pygame.K_ESCAPE:
         pygame.quit()
+      pygame.display.update()
 
 if __name__ == '__main__':
     main()
