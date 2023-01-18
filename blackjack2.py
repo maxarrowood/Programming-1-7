@@ -25,6 +25,9 @@ textRect1 = d_point.get_rect()
 textRect1.center = (400 // 2, 100 // 2)
 
 logo = pygame.image.load("maxlogo.png").convert()
+controls = pygame.image.load("rules.png").convert()
+lose = pygame.image.load("lose.png").convert()
+win = pygame.image.load("win.png").convert()
 pygame.display.set_caption("Max's Blackjack")
 
 width, height = 800, 600
@@ -50,7 +53,8 @@ d_sum = 0
 #get cards
 def play():
 
-  global p_sum, d_sum
+  p_sum = 0
+  d_sum = 0
   
   d_cards = []
   p_cards = []
@@ -75,10 +79,8 @@ def play():
   screen.fill(red)
   p_point = font.render("Your Hand: " + str(p_sum), True, white, black)
   d_point = font.render("Dealer's Hand: " + str(d_sum), True, white, black)
-  display_surface = pygame.display.set_mode((800, 600))
   textRect = p_point.get_rect()
   textRect.center = (400 // 2, 500 // 2)
-  display_surface1 = pygame.display.set_mode((800, 600))
   textRect1 = d_point.get_rect()
   textRect1.center = (400 // 2, 100 // 2)
 
@@ -94,21 +96,20 @@ def hand():
         2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
         2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,]
 
-  newhand = [str(p_sum)]
+  newhand = [p_sum]
 
   newhand.append(random.choice(newdeck))
 
   for i in range(0, len(newhand)):    
-   newsum = newsum + newhand[i];
+   newsum = p_sum + newhand[i];
 
   if newsum > 21:
-    pass
+    screen.blit(lose, (500, 100))
+    
   else:
     p_point = font.render("Your Hand: " + str(newsum), True, white, black)
-    display_surface = pygame.display.set_mode((800, 600))
     textRect = p_point.get_rect()
     textRect.center = (400 // 2, 500 // 2)
-    display_surface.blit(p_point, textRect)
 
 def hold():
 
@@ -137,8 +138,9 @@ def hold():
     if d_sum < p_sum:
       pass
     if d_sum > p_sum:
-  
+      pass
 #game
+      
 def main():
   pygame.init()
   global p_sum, d_sum
@@ -154,11 +156,14 @@ def main():
         screen.fill(red)
         display_surface.blit(p_point, textRect)
         display_surface1.blit(d_point, textRect1)
+        screen.blit(controls, (500, 100))
         pygame.display.flip()
 
       if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_q:
           play()
+          screen.blit(controls, (500, 100))
+          pygame.display.flip()
 
         if event.key == pygame.K_g:
           hand()
