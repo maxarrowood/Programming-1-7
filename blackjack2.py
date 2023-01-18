@@ -43,11 +43,14 @@ deck = [
       2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
       2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,]
 
+global p_sum, d_sum
+p_sum = 0
+d_sum = 0
+
 #get cards
 def play():
 
-  p_sum = 0
-  d_sum = 0
+  global p_sum, d_sum
   
   d_cards = []
   p_cards = []
@@ -83,6 +86,7 @@ def play():
   display_surface1.blit(d_point, textRect1)
 
 def hand():
+  global p_sum, d_sum
   newsum = 0
   newdeck = [
         2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
@@ -108,6 +112,7 @@ def hand():
 
 def hold():
 
+  global p_sum, d_sum
   newdeck = [
         2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
         2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
@@ -136,6 +141,7 @@ def hold():
 #game
 def main():
   pygame.init()
+  global p_sum, d_sum
 
   screen.blit(logo, (0, 0))
   pygame.display.flip()
